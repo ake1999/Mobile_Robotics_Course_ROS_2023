@@ -1,49 +1,133 @@
 <?xml version="1.0" ?>
 
-<launch> 
+<launch>
   <arg name="scan_topic" default="scan" /> 
- 
-<!-- Defining parameters for slam_gmapping node --> 
- 
-  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen"> 
-    <param name="base_frame" value="base_footprint"/> 
-    <param name="odom_frame" value="odom"/> 
-    <param name="map_update_interval" value="5.0"/> 
-    <param name="maxUrange" value="6.0"/> 
-    <param name="maxRange" value="8.0"/> 
-    <param name="sigma" value="0.05"/> 
-    <param name="kernelSize" value="1"/> 
-    <param name="lstep" value="0.05"/> 
-    <param name="astep" value="0.05"/> 
-    <param name="iterations" value="5"/> 
-    <param name="lsigma" value="0.075"/> 
-    <param name="ogain" value="3.0"/> 
-    <param name="lskip" value="0"/> 
-    <param name="minimumScore" value="100"/> 
-    <param name="srr" value="0.01"/> 
-    <param name="srt" value="0.02"/> 
-    <param name="str" value="0.01"/> 
-    <param name="stt" value="0.02"/> 
-    <param name="linearUpdate" value="0.5"/> 
-    <param name="angularUpdate" value="0.436"/> 
-    <param name="temporalUpdate" value="-1.0"/> 
-    <param name="resampleThreshold" value="0.5"/> 
-    <param name="particles" value="80"/> 
-  
-    <param name="xmin" value="-1.0"/> 
-    <param name="ymin" value="-1.0"/> 
-    <param name="xmax" value="1.0"/> 
-    <param name="ymax" value="1.0"/> 
- 
-    <param name="delta" value="0.05"/> 
-    <param name="llsamplerange" value="0.01"/> 
-    <param name="llsamplestep" value="0.01"/> 
-    <param name="lasamplerange" value="0.005"/> 
-    <param name="lasamplestep" value="0.005"/> 
-    <remap from="scan" to="$(arg scan_topic)"/> 
-  </node> 
- 
 
- 
-</launch> 
+  <!-- Defining parameters for slam_gmapping node -->
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <!-- Parameters for mapping configuration -->
+
+    <!-- Specifies the name of the base frame used in mapping -->
+    <param name="base_frame" value="base_footprint"/>
+
+    <!-- Specifies the name of the map frame used in mapping -->
+    <param name="map_frame" value="map"/>
+
+    <!-- Specifies the name of the odometry frame used in mapping -->
+    <param name="odom_frame" value="odom"/>
+
+
+
+    <!-- Parameters for laser scan -->
+
+    <!-- Maximum range of the laser scan used reliably for mapping -->
+    <param name="maxUrange" value="6.0"/>
+
+    <!-- Maximum range of the laser scan that will be considered for mapping -->
+    <param name="maxRange" value="8.0"/>
+    
+    <!-- Threshold on gmapping's occupancy values. Cells with greater occupancy are considered occupied (i.e., set to 100 in the resulting sensor_msgs/LaserScan). -->
+    <param name="occ_thresh" value="0.25"/>
+
+    <!-- The sigma used by the greedy endpoint matching -->
+    <param name="sigma" value="0.05"/>
+
+    <!-- The kernel in which to look for a correspondence -->
+    <param name="kernelSize" value="1"/>
+
+    <!-- Linear displacement between successive scans for updating the particle weights -->
+    <param name="lstep" value="0.05"/>
+
+    <!-- Angular displacement between successive scans for updating the particle weights -->
+    <param name="astep" value="0.05"/>
+
+    <!-- Number of iterations for scanmatcher matching optimization -->
+    <param name="iterations" value="5"/>
+
+    <!-- The sigma of a beam used for likelihood computation -->
+    <param name="lsigma" value="0.075"/>
+
+    <!-- Gain to be used while evaluating the likelihood, for smoothing the resampling effects -->
+    <param name="ogain" value="3.0"/>
+
+    <!-- Number of beams to skip in each scan. Take only every (n+1)th laser ray for computing a match (0 = take all rays) -->
+    <param name="lskip" value="0"/>
+
+    <!-- Minimum score for considering the outcome of the scan matching good. Can avoid jumping pose estimates in large open spaces when using laser scanners with limited range (e.g. 5m). Scores go up to 600+, try 50 for example when experiencing jumping estimate issues. -->
+    <param name="minimumScore" value="100"/>
+    
+    <!-- Number of particles used in the particle filter -->
+    <param name="particles" value="80"/>
+
+
+    <!-- Parameters for the motion model -->
+
+    <!-- Odometry error in translation as a function of translation (rho/rho) -->
+    <param name="srr" value="0.01"/>
+
+    <!-- Odometry error in translation as a function of rotation (rho/theta) -->
+    <param name="srt" value="0.02"/>
+
+    <!-- Odometry error in rotation as a function of translation (theta/rho) -->
+    <param name="str" value="0.01"/>
+
+    <!-- Odometry error in rotation as a function of rotation (theta/theta) -->
+    <param name="stt" value="0.02"/>
+
+
+    <!-- Parameters for map update and resampling -->
+
+    <!-- Linear update threshold for updating the map -->
+    <param name="linearUpdate" value="0.5"/>
+
+    <!-- Angular update threshold for updating the map -->
+    <param name="angularUpdate" value="0.436"/>
+
+    <!-- Process a scan if the last scan processed is older than the update time in seconds. A value less than zero will turn time based updates off. -->
+    <param name="temporalUpdate" value="-1.0"/>
+
+    <!-- Resampling threshold for particle resampling -->
+    <param name="resampleThreshold" value="0.5"/>
+
+    <!-- Remapping the topic named "scan" to the value provided in the "scan_topic" argument -->
+    <remap from="scan" to="$(arg scan_topic)"/>
+    
+    <!-- How long (in seconds) between updates to the map. Lowering this number updates the occupancy grid more often, at the expense of greater computational load. -->
+    <param name="map_update_interval" value="5.0"/>
+    
+    <!-- Parameters for the map boundaries -->
+
+    <!-- Minimum x-coordinate of the map boundary -->
+    <param name="xmin" value="-1.0"/>
+
+    <!-- Minimum y-coordinate of the map boundary -->
+    <param name="ymin" value="-1.0"/>
+
+    <!-- Maximum x-coordinate of the map boundary -->
+    <param name="xmax" value="1.0"/>
+
+    <!-- Maximum y-coordinate of the map boundary -->
+    <param name="ymax" value="1.0"/>
+
+    <!-- Resolution of the map (in metres per occupancy grid block) in the x and y directions -->
+    <param name="delta" value="0.05"/>
+    
+    <!-- Parameters for likelihood field sampling -->
+
+    <!-- Range of the likelihood field sampling in the log-likelihood space in the linear direction -->
+    <param name="llsamplerange" value="0.01"/>
+
+    <!-- Step size of the likelihood field sampling in the log-likelihood space in the linear direction -->
+    <param name="llsamplestep" value="0.01"/>
+
+    <!-- Range of the likelihood field sampling in the log-likelihood space in the angular direction -->
+    <param name="lasamplerange" value="0.005"/>
+
+    <!-- Step size of the likelihood field sampling in the log-likelihood space in the angular direction -->
+    <param name="lasamplestep" value="0.005"/>
+
+  </node>
+
+</launch>
 

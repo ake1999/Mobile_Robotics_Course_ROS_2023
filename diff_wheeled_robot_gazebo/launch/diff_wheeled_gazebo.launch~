@@ -5,7 +5,7 @@
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
-  <arg name="headless" default="false"/>
+  <arg name="headless" default="ture"/>
   <arg name="debug" default="false"/>
 
   <!-- We resume the logic in empty_world.launch -->
