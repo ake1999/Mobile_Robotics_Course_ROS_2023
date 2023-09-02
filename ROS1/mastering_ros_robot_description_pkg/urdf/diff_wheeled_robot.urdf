@@ -20,7 +20,6 @@
   </material>
   <!-- in kg-->
   <!-- in kg-->
-   --&gt; 
   <!-- BASE-FOOTPRINT -->
   <!-- base_footprint is a fictitious link(frame) that is on the ground right below base_link origin -->
   <link name="base_footprint">
@@ -243,4 +242,3 @@
     </plugin>
   </gazebo>
 </robot>
-

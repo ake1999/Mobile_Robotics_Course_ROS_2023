@@ -1,0 +1,43 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/ali/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/ali/catkin_ws/src/Robotics_Course_ROS_2023/demo_ros_basics/custom_msg_cpp_pkg/include/**",
+        "/home/ali/catkin_ws/src/franka_ros/franka_control/include/**",
+        "/home/ali/catkin_ws/src/franka_ros/franka_example_controllers/include/**",
+        "/home/ali/catkin_ws/src/franka_ros/franka_gazebo/include/**",
+        "/home/ali/catkin_ws/src/franka_ros/franka_gripper/include/**",
+        "/home/ali/catkin_ws/src/franka_ros/franka_hw/include/**",
+        "/home/ali/catkin_ws/src/Robotics_Course_ROS_2023/kuka_lbr_iiwa/kuka_lbr_iiwa_pick_place_pkg/include/**",
+        "/home/ali/catkin_ws/src/ld08_driver/include/**",
+        "/home/ali/catkin_ws/src/open_manipulator/open_manipulator/open_manipulator_control_gui/include/**",
+        "/home/ali/catkin_ws/src/open_manipulator/open_manipulator/open_manipulator_controller/include/**",
+        "/home/ali/catkin_ws/src/open_manipulator/open_manipulator_controls/open_manipulator_controllers/include/**",
+        "/home/ali/catkin_ws/src/open_manipulator/open_manipulator_controls/open_manipulator_hw/include/**",
+        "/home/ali/catkin_ws/src/open_manipulator/open_manipulator/open_manipulator_libs/include/**",
+        "/home/ali/catkin_ws/src/open_manipulator/open_manipulator_applications/open_manipulator_master_slave/include/**",
+        "/home/ali/catkin_ws/src/open_manipulator/open_manipulator/open_manipulator_teleop/include/**",
+        "/home/ali/catkin_ws/src/open_manipulator/open_manipulator_dependencies/roboticsgroup_gazebo_plugins/include/**",
+        "/home/ali/catkin_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/ali/catkin_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/home/ali/catkin_ws/src/turtlebot3_manipulation/turtlebot3_manipulation/turtlebot3_manipulation_bringup/include/**",
+        "/home/ali/catkin_ws/src/turtlebot3_manipulation/turtlebot3_manipulation/turtlebot3_manipulation_gui/include/**",
+        "/home/ali/catkin_ws/src/turtlebot3/turtlebot3/turtlebot3_slam/include/**",
+        "/home/ali/catkin_ws/src/using_markers/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
