@@ -1,4 +1,4 @@
-# Session 9:
+# Session 9: Mini Project 3
 
 ## Group Mini Project 3
 

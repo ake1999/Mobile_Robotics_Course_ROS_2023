@@ -1,4 +1,4 @@
-# Session 1
+# Session 1: ROS 2 Installation
 
 ## Table of Contents
 

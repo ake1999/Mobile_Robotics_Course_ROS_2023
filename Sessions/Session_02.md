@@ -1,4 +1,4 @@
-# Session 2
+# Session 2: ROS 2 Client libraries
 
 ## Table of Contents
 
@@ -41,7 +41,6 @@ In the world of ROS 2, client libraries play a pivotal role in enabling communic
 
 For a comprehensive understanding of ROS 2 Client Libraries, refer to the [ROS 2 Beginner Client Libraries Tutorial](https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries.html) for step-by-step instructions, code examples, and hands-on exercises. It's an essential resource to deepen your understanding of ROS 2 client libraries and their applications in robotics.
 
-
 In this tutorial, you will learn about:
 
 1. **Client Libraries Overview:** Get an overview of ROS 2 client libraries and their significance in developing robotic applications.
@@ -53,4 +52,3 @@ In this tutorial, you will learn about:
 4. **Client Libraries Compatibility:** Understand how different client libraries (C++, Python, and more) can work together seamlessly within the ROS 2 ecosystem.
 
 By following this tutorial, you'll gain valuable insights into the role of client libraries in ROS 2 development and acquire practical skills for building robotic applications using these libraries.
-

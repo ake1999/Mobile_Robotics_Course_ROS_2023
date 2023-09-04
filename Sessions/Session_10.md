@@ -1,4 +1,4 @@
-# Session 10:
+# Session 10: Mini Project 4
 
 ## Group Mini Project 4
 

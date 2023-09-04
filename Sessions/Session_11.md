@@ -1,4 +1,4 @@
-# Session 11:
+# Session 11: Final Project
 
 ## Final Project
 

@@ -1,4 +1,4 @@
-# Session 8:
+# Session 8: Mini Project 2
 
 ## Group Mini Project 2
 
